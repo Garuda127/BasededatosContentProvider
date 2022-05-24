@@ -1,4 +1,4 @@
-package net.ivanvega.basededatoslocalconrooma;
+package net.ivanvega.basededatosconrooma;
 
 import org.junit.Test;
 

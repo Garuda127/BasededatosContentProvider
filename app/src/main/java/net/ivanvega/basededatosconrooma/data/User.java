@@ -1,4 +1,4 @@
-package net.ivanvega.basededatoslocalconrooma.data;
+package net.ivanvega.basededatosconrooma.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class User {
-
     @PrimaryKey(autoGenerate = true)
     public int uid;
 
@@ -15,5 +14,4 @@ public class User {
 
     @ColumnInfo(name = "last_name")
     public String lastName;
-
 }

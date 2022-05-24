@@ -1,4 +1,4 @@
-package net.ivanvega.basededatosconrooma.data;
+package net.ivanvega.basededatoslocalconrooma.data;
 
 import android.content.Context;
 
@@ -9,32 +9,25 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@Database(entities = {User.class}, version = 1)
+public abstract class AppDatabase extends RoomDatabase {
+    public abstract UserDao userDao();
 
-@Database(entities = {User.class} , version = 1)
-public abstract class AppDataBase extends RoomDatabase {
-    public abstract UserDao getUserDao();
-
+    private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    private static volatile AppDataBase INSTANCE;
-
-    public static AppDataBase getDataBaseInstance(Context context){
-        if(INSTANCE == null){
-            synchronized (AppDataBase.class){
+    public static AppDatabase getDatabaseInstance(Context context) {
+        if (INSTANCE == null) {
+            synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDataBase.class, "user_database")
+                            AppDatabase.class, "dbusers").allowMainThreadQueries()
                             .build();
                 }
             }
-
         }
         return INSTANCE;
     }
-
-
-
-
 }

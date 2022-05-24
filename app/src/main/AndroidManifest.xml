@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="basededatosconrooma">
+    package="net.ivanvega.basededatoslocalconrooma">
 
     <application
         android:allowBackup="true"
@@ -8,9 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BaseDeDatosConRoomB">
+        android:theme="@style/Theme.BaseDeDatosLocalConRoomA">
         <activity
-            android:name="net.ivanvega.basededatosconrooma.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +19,12 @@
             </intent-filter>
         </activity>
 
-            <provider
-                android:authorities="basededatosconrooma.provider"
-                android:name="net.ivanvega.basededatosconrooma.provider.MiProveedorContenido"
-                android:exported="true"
-                >
+        <provider
+            android:authorities="net.ivanvega.basededatoslocalconrooma.provider"
+            android:name=".provider.MiContentProvider"
+            android:exported="true"
+            ></provider>
 
-        </provider>
     </application>
 
 </manifest>
